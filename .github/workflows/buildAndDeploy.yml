@@ -35,7 +35,9 @@ jobs:
       - run: npm ci
 
       - run: npm run build
-
-      - run: npm publish
+      
+      - run: npm config set _authToken=$NODE_AUTH_TOKEN
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - run: npm publish
