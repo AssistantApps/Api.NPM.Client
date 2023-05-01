@@ -1,6 +1,6 @@
 {
   "name": "@assistantapps/assistantapps.api.client",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "description": "Typescript package for interacting with the AssistantApps WebAPI",
   "author": "Kurt Lourens",
   "license": "MIT",
@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@microsoft/signalr": "^7.0.5",
-    "axios": "^1.3.6",
     "dayjs": "^1.11.7"
   },
   "devDependencies": {
