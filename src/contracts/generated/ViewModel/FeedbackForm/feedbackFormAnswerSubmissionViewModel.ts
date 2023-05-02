@@ -7,4 +7,6 @@ export interface FeedbackFormAnswerSubmissionViewModel {
     userUniqueIdentifier: string;
     platformType: PlatformType;
     items: any[];
+    feedbackFormQuestionGuid: string;
+    answer: string;
 }

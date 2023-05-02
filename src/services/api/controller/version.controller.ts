@@ -1,6 +1,6 @@
 import { endpoints } from "../../../constants/endpoints";
 import { VersionViewModel } from "../../../contracts/generated/ViewModel/Version/versionViewModel";
-import { Result, ResultWithValue } from "../../../contracts/result";
+import { Result, ResultWithValue, ResultWithValueAndPagination } from "../../../contracts/result";
 import { BaseApiService } from "../baseApiService";
 import { PlatformType } from "../../../contracts/generated/Enum/platformType";
 import { VersionSearchViewModel } from "../../../contracts/generated/ViewModel/Version/versionSearchViewModel";
@@ -8,7 +8,7 @@ import { anyObject } from "../../../helper/typescriptHacks";
 
 export interface IVersionController {
     create: (item: VersionViewModel) => Promise<Result>;
-    createSearch: (item: VersionSearchViewModel) => Promise<Result>;
+    createSearch: (item: VersionSearchViewModel) => Promise<ResultWithValueAndPagination<Array<VersionViewModel>>>;
     createNotification: (winGuid: string) => Promise<Result>;
     readLatest: (appGuid: string) => Promise<ResultWithValue<VersionViewModel>>;
     readAllForAdmin: () => Promise<ResultWithValue<Array<VersionViewModel>>>;
@@ -26,12 +26,13 @@ export const versionController = (service: BaseApiService): IVersionController =
             service.addAccessTokenToHeaders,
         );
     },
-    createSearch: (item: VersionSearchViewModel): Promise<Result> => {
-        return service.post<any, VersionSearchViewModel>(
+    createSearch: async (item: VersionSearchViewModel): Promise<ResultWithValueAndPagination<Array<VersionViewModel>>> => {
+        const apiResult = await service.post<any, any>(
             `${apiPath}/Search`,
             item,
             service.addAccessTokenToHeaders,
         );
+        return apiResult.value as any;
     },
     createNotification: (winGuid: string): Promise<Result> => {
         return service.post(
