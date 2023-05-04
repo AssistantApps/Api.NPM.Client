@@ -36,6 +36,12 @@ jobs:
 
       - run: npm run build
       
+      - name: echo
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+        run: |
+          echo $NODE_AUTH_TOKEN
+      
       - name: Publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
