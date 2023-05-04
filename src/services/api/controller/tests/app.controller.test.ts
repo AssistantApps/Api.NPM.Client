@@ -24,6 +24,7 @@ export const appEndpointTests = (apiService: () => BaseApiService) => () => {
             gameName: 'Jest',
             iconUrl: 'icon.png',
             logoUrl: 'logo.png',
+            linkUrl: 'logo.png',
             isVisible: true,
             sortOrder: 0,
         });
