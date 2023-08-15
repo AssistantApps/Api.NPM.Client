@@ -20,7 +20,6 @@ export const formDataWithAccessTokenHeaders = (headerProps: IHeaderProps) => {
         ...onlyAccessToken,
         headers: {
             ...onlyAccessToken.headers,
-            'Content-Type': 'multipart/form-data',
         }
     });
 }
