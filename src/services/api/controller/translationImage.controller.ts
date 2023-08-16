@@ -4,7 +4,7 @@ import { Result, ResultWithValue } from "../../../contracts/result";
 import { BaseApiService } from "../baseApiService";
 
 export interface ITranslationImageController {
-    add: (guid: string, formData: any) => Promise<Result>;
+    add: (guid: string, fileName: any, data: any) => Promise<Result>;
     readAll: (guid: string) => Promise<ResultWithValue<Array<TranslationImageViewModel>>>;
     del: (guid: string) => Promise<Result>;
 }
@@ -12,11 +12,14 @@ export interface ITranslationImageController {
 const apiPath = endpoints.translationImage;
 
 export const translationImageController = (service: BaseApiService): ITranslationImageController => ({
-    add: (guid: string, formData: any): Promise<Result> => {
-        return service.post<any, Array<TranslationImageViewModel>>(
+    add: (guid: string, fileName: any, data: any): Promise<Result> => {
+        return service.post<any, any>(
             `${apiPath}/${guid}`,
-            formData,
-            service.formDataWithAccessTokenHeaders,
+            {
+                Name: fileName,
+                Data: data,
+            },
+            service.addAccessTokenToHeaders,
         );
     },
     readAll: (guid: string): Promise<ResultWithValue<Array<TranslationImageViewModel>>> => {
