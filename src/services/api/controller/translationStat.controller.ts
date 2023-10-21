@@ -13,8 +13,8 @@ const apiPath = endpoints.translationStatLeaderboard;
 export const translationStatController = (service: BaseApiService): ITranslationStatController => ({
     readAll: async (search: TranslationLeaderboardSearchViewModel): Promise<ResultWithValue<Array<TranslatorLeaderboardItemViewModel>>> => {
         const apiResult = await service.post<Array<TranslatorLeaderboardItemViewModel>, TranslationLeaderboardSearchViewModel>(
-            apiPath, search,
-            service.addAccessTokenToHeaders,
+            apiPath, 
+            search,
         );
         return {
             ...apiResult.value,

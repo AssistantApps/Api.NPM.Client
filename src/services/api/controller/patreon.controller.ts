@@ -11,9 +11,6 @@ const apiPath = endpoints.patreon;
 
 export const patreonController = (service: BaseApiService): IPatreonController => ({
     readAll: (): Promise<ResultWithValue<Array<PatreonViewModel>>> => {
-        return service.get<Array<PatreonViewModel>>(
-            apiPath,
-            service.addAccessTokenToHeaders,
-        );
+        return service.get<Array<PatreonViewModel>>(apiPath);
     },
 });

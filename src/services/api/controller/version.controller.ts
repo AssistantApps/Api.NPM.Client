@@ -10,7 +10,7 @@ export interface IVersionController {
     create: (item: VersionViewModel) => Promise<Result>;
     createSearch: (item: VersionSearchViewModel) => Promise<ResultWithValueAndPagination<Array<VersionViewModel>>>;
     createNotification: (winGuid: string) => Promise<Result>;
-    readLatest: (appGuid: string) => Promise<ResultWithValue<VersionViewModel>>;
+    readLatest: (appGuid: string, platforms: Array<PlatformType>) => Promise<ResultWithValue<VersionViewModel>>;
     readAllForAdmin: () => Promise<ResultWithValue<Array<VersionViewModel>>>;
     readAllHistory: (appGuid: string, langGuid: string, platforms?: Array<PlatformType>, page?: number) => Promise<ResultWithValue<Array<VersionViewModel>>>;
     update: (item: VersionViewModel) => Promise<Result>;
@@ -30,7 +30,6 @@ export const versionController = (service: BaseApiService): IVersionController =
         const apiResult = await service.post<any, any>(
             `${apiPath}/Search`,
             item,
-            service.addAccessTokenToHeaders,
         );
         return apiResult.value as any;
     },
@@ -41,8 +40,17 @@ export const versionController = (service: BaseApiService): IVersionController =
             service.addAccessTokenToHeaders,
         );
     },
-    readLatest: (appGuid: string): Promise<ResultWithValue<VersionViewModel>> => {
-        return service.get<VersionViewModel>(`${apiPath}/${appGuid}`);
+    readLatest: (appGuid: string, platforms: Array<PlatformType>): Promise<ResultWithValue<VersionViewModel>> => {
+        let queryPath = '';
+        for (const queryParam in platforms) {
+            if (queryParam == null || queryParam.length < 1) continue;
+            if (queryPath.length > 0) {
+                queryPath = queryPath + '&';
+            }
+            queryPath = queryPath + '=' + queryParam;
+        }
+        const url = `${apiPath}/${appGuid}?${queryPath}`;
+        return service.get<VersionViewModel>(url);
     },
     readAllForAdmin: (): Promise<ResultWithValue<Array<VersionViewModel>>> => {
         return service.get<Array<VersionViewModel>>(
