@@ -21,7 +21,10 @@ export const permissionController = (service: BaseApiService): IPermissionContro
         );
     },
     readPermissionsForUserGuid: (userGuid: string): Promise<ResultWithValue<Array<PermissionType>>> => {
-        return service.get<Array<PermissionType>>(`${apiPath}/${userGuid}`);
+        return service.get<Array<PermissionType>>(
+            `${apiPath}/${userGuid}`,
+            service.addAccessTokenToHeaders,
+        );
     },
     addForUser: (userGuid: string, permissionType: PermissionType): Promise<Result> => {
         return service.post(
@@ -31,9 +34,8 @@ export const permissionController = (service: BaseApiService): IPermissionContro
         );
     },
     delPermissionForUser: (userGuid: string, permissionType: PermissionType): Promise<Result> => {
-        const url = `${apiPath}/${userGuid}/${PermissionType[permissionType].toString()}`;
         return service.delete(
-            url,
+            `${apiPath}/${userGuid}/${PermissionType[permissionType].toString()}`,
             service.addAccessTokenToHeaders,
         );
     }

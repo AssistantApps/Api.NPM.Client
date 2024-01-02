@@ -1,6 +1,6 @@
 {
   "name": "@assistantapps/assistantapps.api.client",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Typescript package for interacting with the AssistantApps WebAPI",
   "author": "Kurt Lourens",
   "license": "MIT",
