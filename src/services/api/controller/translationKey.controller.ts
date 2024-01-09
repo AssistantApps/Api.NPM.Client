@@ -27,7 +27,7 @@ export const translationKeyController = (service: BaseApiService): ITranslationK
     },
     createSearch: (search: TranslationSearchViewModel): Promise<ResultWithValue<Array<TranslationKeyViewModel>>> => {
         return service.post<Array<TranslationKeyViewModel>, any>(
-            endpoints.translationKeySearchDropdown,
+            `${apiPath}/Search`,
             search,
             service.addAccessTokenToHeaders,
         );
