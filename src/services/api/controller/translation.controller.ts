@@ -1,6 +1,7 @@
 import { endpoints } from "../../../constants/endpoints";
 import { TranslationGetGraphViewModel } from "../../../contracts/generated/ViewModel/Translation/translationGetGraphViewModel";
 import { TranslationSubmissionViewModel } from "../../../contracts/generated/ViewModel/Translation/translationSubmissionViewModel";
+import { TranslationSubmissionWithVotesViewModel } from "../../../contracts/generated/ViewModel/Translation/translationSubmissionWithVotesViewModel";
 import { TranslationSubmittedDetailSearchViewModel } from "../../../contracts/generated/ViewModel/Translation/translationSubmittedDetailSearchViewModel";
 import { TranslationSubmittedDetailViewModel } from "../../../contracts/generated/ViewModel/Translation/translationSubmittedDetailViewModel";
 import { TranslationViewModel } from "../../../contracts/generated/ViewModel/Translation/translationViewModel";
@@ -13,7 +14,7 @@ export interface ITranslationController {
     createSearch: (search: TranslationSubmittedDetailSearchViewModel) => Promise<ResultWithValueAndPagination<Array<TranslationSubmittedDetailViewModel>>>;
     createSearchPerLanguage: (search: TranslationGetGraphViewModel) => Promise<ResultWithValue<Array<TranslationsPerLanguageGraphViewModel>>>;
     read: (transGuid: string) => Promise<ResultWithValue<TranslationViewModel>>;
-    readForLang: (transGuid: string, langGuid: string) => Promise<ResultWithValue<Array<TranslationViewModel>>>;
+    readForLang: (transGuid: string, langGuid: string) => Promise<ResultWithValue<Array<TranslationSubmissionWithVotesViewModel>>>;
     del: (guid: string) => Promise<Result>;
 }
 
@@ -48,17 +49,14 @@ export const translationController = (service: BaseApiService): ITranslationCont
             service.addAccessTokenToHeaders,
         );
     },
-    readForLang: (transGuid: string, langGuid: string): Promise<ResultWithValue<Array<TranslationViewModel>>> => {
-        return service.get<Array<TranslationViewModel>>(
+    readForLang: (transGuid: string, langGuid: string): Promise<ResultWithValue<Array<TranslationSubmissionWithVotesViewModel>>> => {
+        return service.get<Array<TranslationSubmissionWithVotesViewModel>>(
             `${apiPath}/${transGuid}/${langGuid}`,
             service.addAccessTokenToHeaders,
         );
     },
     del: (guid: string): Promise<Result> => {
         const url = `${apiPath}/${guid}`;
-        return service.delete(
-            url,
-            service.addAccessTokenToHeaders,
-        );
+        return service.delete(url, service.addAccessTokenToHeaders);
     }
 });

@@ -29,6 +29,7 @@ import { userActivityController } from './controller/userActivity.controller';
 import { versionController } from './controller/version.controller';
 import { addAccessTokenToHeaders, formDataWithAccessTokenHeaders } from "../../helper/headerHelper";
 import { translationController } from './controller/translation.controller';
+import { translationVoteController } from './controller/translationVote.controller';
 
 
 export class AssistantAppsApiService extends BaseApiService {
@@ -70,6 +71,7 @@ export class AssistantAppsApiService extends BaseApiService {
     teamMember = teamMemberController(this);
     translation = translationController(this);
     translationImage = translationImageController(this);
+    translationVote = translationVoteController(this);
     translationKey = translationKeyController(this);
     translationReport = translationReportController(this);
     translationStat = translationStatController(this);

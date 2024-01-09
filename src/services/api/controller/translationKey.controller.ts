@@ -6,8 +6,8 @@ import { BaseApiService } from "../baseApiService";
 
 export interface ITranslationKeyController {
     create: (item: TranslationKeyViewModel) => Promise<ResultWithValue<string>>;
-    createSearch: (search: TranslationSearchViewModel) => Promise<ResultWithValue<Array<TranslationSearchViewModel>>>;
-    createSearchDropdown: (search: TranslationSearchViewModel) => Promise<ResultWithValue<Array<TranslationSearchViewModel>>>;
+    createSearch: (search: TranslationSearchViewModel) => Promise<ResultWithValue<Array<TranslationKeyViewModel>>>;
+    createSearchDropdown: (search: TranslationSearchViewModel) => Promise<ResultWithValue<Array<TranslationKeyViewModel>>>;
     read: (guid: string) => Promise<ResultWithValue<TranslationKeyViewModel>>;
     readAll: () => Promise<ResultWithValue<Array<TranslationKeyViewModel>>>;
     update: (item: TranslationKeyViewModel) => Promise<Result>;
@@ -24,15 +24,15 @@ export const translationKeyController = (service: BaseApiService): ITranslationK
             service.addAccessTokenToHeaders,
         );
     },
-    createSearch: (search: TranslationSearchViewModel): Promise<ResultWithValue<Array<TranslationSearchViewModel>>> => {
-        return service.post<Array<TranslationSearchViewModel>, any>(
+    createSearch: (search: TranslationSearchViewModel): Promise<ResultWithValue<Array<TranslationKeyViewModel>>> => {
+        return service.post<Array<TranslationKeyViewModel>, any>(
             endpoints.translationKeySearchDropdown,
             search,
             service.addAccessTokenToHeaders,
         );
     },
-    createSearchDropdown: (search: TranslationSearchViewModel): Promise<ResultWithValue<Array<TranslationSearchViewModel>>> => {
-        return service.post<Array<TranslationSearchViewModel>, any>(
+    createSearchDropdown: (search: TranslationSearchViewModel): Promise<ResultWithValue<Array<TranslationKeyViewModel>>> => {
+        return service.post<Array<TranslationKeyViewModel>, any>(
             endpoints.translationKeySearchDropdown,
             search,
             service.addAccessTokenToHeaders,

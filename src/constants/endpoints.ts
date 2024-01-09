@@ -9,6 +9,7 @@ export const endpoints = {
     translationKey: 'TranslationKey',
     translationReport: 'TranslationReport',
     translationImage: 'TranslationImage',
+    translationVote: 'TranslationVote',
     translationKeySearchDropdown: 'translationKey/SearchDropdown',
     translationStatLeaderboard: 'translationStats/TranslatorLeaderboard',
     user: 'User',
