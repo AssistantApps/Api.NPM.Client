@@ -1,4 +1,5 @@
 import { endpoints } from "../../../constants/endpoints";
+import { TranslationKeySearchDropdownViewModel } from "../../../contracts/generated/ViewModel/Translation/translationKeySearchDropdownViewModel";
 import { TranslationKeyViewModel } from "../../../contracts/generated/ViewModel/Translation/translationKeyViewModel";
 import { TranslationSearchViewModel } from "../../../contracts/generated/ViewModel/Translation/translationSearchViewModel";
 import { Result, ResultWithValue } from "../../../contracts/result";
@@ -7,7 +8,7 @@ import { BaseApiService } from "../baseApiService";
 export interface ITranslationKeyController {
     create: (item: TranslationKeyViewModel) => Promise<ResultWithValue<string>>;
     createSearch: (search: TranslationSearchViewModel) => Promise<ResultWithValue<Array<TranslationKeyViewModel>>>;
-    createSearchDropdown: (search: TranslationSearchViewModel) => Promise<ResultWithValue<Array<TranslationKeyViewModel>>>;
+    createSearchDropdown: (search: TranslationSearchViewModel) => Promise<ResultWithValue<Array<TranslationKeySearchDropdownViewModel>>>;
     read: (guid: string) => Promise<ResultWithValue<TranslationKeyViewModel>>;
     readAll: () => Promise<ResultWithValue<Array<TranslationKeyViewModel>>>;
     update: (item: TranslationKeyViewModel) => Promise<Result>;
@@ -31,8 +32,8 @@ export const translationKeyController = (service: BaseApiService): ITranslationK
             service.addAccessTokenToHeaders,
         );
     },
-    createSearchDropdown: (search: TranslationSearchViewModel): Promise<ResultWithValue<Array<TranslationKeyViewModel>>> => {
-        return service.post<Array<TranslationKeyViewModel>, any>(
+    createSearchDropdown: (search: TranslationSearchViewModel): Promise<ResultWithValue<Array<TranslationKeySearchDropdownViewModel>>> => {
+        return service.post<Array<TranslationKeySearchDropdownViewModel>, any>(
             endpoints.translationKeySearchDropdown,
             search,
             service.addAccessTokenToHeaders,
