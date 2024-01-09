@@ -5,7 +5,7 @@ import { BaseApiService } from "../baseApiService";
 
 export interface ITranslationVoteController {
     create: (item: TranslationVoteViewModel) => Promise<Result>;
-    read: (guid: string) => Promise<ResultWithValue<TranslationVoteViewModel>>;
+    readForTansKeyGuid: (guid: string) => Promise<ResultWithValue<Array<TranslationVoteViewModel>>>;
     update: (item: TranslationVoteViewModel) => Promise<Result>;
     del: (item: TranslationVoteViewModel) => Promise<Result>;
 }
@@ -20,8 +20,8 @@ export const translationVoteController = (service: BaseApiService): ITranslation
             service.addAccessTokenToHeaders,
         );
     },
-    read: (guid: string): Promise<ResultWithValue<TranslationVoteViewModel>> => {
-        return service.get<TranslationVoteViewModel>(
+    readForTansKeyGuid: (guid: string): Promise<ResultWithValue<Array<TranslationVoteViewModel>>> => {
+        return service.get<Array<TranslationVoteViewModel>>(
             `${apiPath}/${guid}`,
             service.addAccessTokenToHeaders,
         );
