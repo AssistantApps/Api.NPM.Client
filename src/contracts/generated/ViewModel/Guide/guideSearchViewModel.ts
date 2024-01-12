@@ -1,6 +1,7 @@
 ﻿/* Auto Generated */
 
 import { SortDirection } from "./../../Enum/sortDirection";
+import { AdminApprovalStatus } from "./../../Enum/adminApprovalStatus";
 
 export interface GuideSearchViewModel {
     appGuid: string;
@@ -12,4 +13,5 @@ export interface GuideSearchViewModel {
     orderByLikes: SortDirection;
     page: number;
     languageCode: string;
+    approvalStatusesToShow: AdminApprovalStatus[];
 }

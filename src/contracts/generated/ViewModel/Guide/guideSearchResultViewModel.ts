@@ -13,7 +13,7 @@ export interface GuideSearchResultViewModel {
     translatorGuid: string;
     translatorName: string;
     minutes: number;
-    tags: any[];
+    tags: string[];
     status: AdminApprovalStatus;
     languageCode: string;
     version: number;

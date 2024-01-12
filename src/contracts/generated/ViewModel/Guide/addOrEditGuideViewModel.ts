@@ -1,5 +1,7 @@
 ﻿/* Auto Generated */
 
+import { GuideSectionViewModel } from "./guideSectionViewModel";
+
 export interface AddOrEditGuideViewModel {
     appGuid: string;
     title: string;
@@ -7,7 +9,7 @@ export interface AddOrEditGuideViewModel {
     showCreatedByUser: boolean;
     languageCode: string;
     minutes: number;
-    tags: any[];
-    sections: any[];
+    tags: string[];
+    sections: GuideSectionViewModel[];
     updatedGuideDetails: boolean;
 }

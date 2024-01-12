@@ -1,8 +1,10 @@
 ﻿/* Auto Generated */
 
+import { DonationType } from "./../Enum/donationType";
+
 export interface DonationSearchViewModel {
     page: number;
-    types: any[];
+    types: DonationType[];
     searchText: string;
     startDate?: Date;
     endDate?: Date;

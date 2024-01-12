@@ -1,7 +1,7 @@
 ﻿/* Auto Generated */
 
 export interface TranslationSearchViewModel {
-    appGuidList: any[];
+    appGuidList: string[];
     languageGuid?: string;
     showOnlyUntranslated: boolean;
 }

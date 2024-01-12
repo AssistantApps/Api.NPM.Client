@@ -1,6 +1,7 @@
 ﻿/* Auto Generated */
 
 import { AdminApprovalStatus } from "./../../Enum/adminApprovalStatus";
+import { GuideSectionViewModel } from "./guideSectionViewModel";
 
 export interface GuideContentViewModel {
     guid: string;
@@ -14,10 +15,10 @@ export interface GuideContentViewModel {
     appGuid: string;
     languageCode: string;
     minutes: number;
-    tags: any[];
+    tags: string[];
     originalGuideGuid: string;
     translatorGuid?: string;
     status: AdminApprovalStatus;
     dateCreated: Date;
-    sections: any[];
+    sections: GuideSectionViewModel[];
 }

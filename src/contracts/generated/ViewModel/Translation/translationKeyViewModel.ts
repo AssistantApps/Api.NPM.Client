@@ -3,7 +3,7 @@
 export interface TranslationKeyViewModel {
     guid: string;
     key: string;
-    appGuids: any[];
+    appGuids: string[];
     meta: string;
     original: string;
     sortOrder: number;

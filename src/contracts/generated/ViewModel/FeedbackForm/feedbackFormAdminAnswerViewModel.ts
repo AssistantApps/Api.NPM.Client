@@ -2,6 +2,7 @@
 
 import { PlatformType } from "./../../Enum/platformType";
 import { FeedbackCategory } from "./../../Enum/feedbackCategory";
+import { FeedbackFormAdminAnswerItemViewModel } from "./feedbackFormAdminAnswerItemViewModel";
 
 export interface FeedbackFormAdminAnswerViewModel {
     guid: string;
@@ -11,5 +12,5 @@ export interface FeedbackFormAdminAnswerViewModel {
     category: FeedbackCategory;
     anonymousUserGuid: string;
     dateAnswered: Date;
-    answers: any[];
+    answers: FeedbackFormAdminAnswerItemViewModel[];
 }

@@ -7,7 +7,7 @@ export interface GuideSectionItemViewModel {
     type: GuideSectionItemType;
     content: string;
     additionalContent: string;
-    tableColumnNames: any[];
+    tableColumnNames: string[];
     tableData: any[];
     sortOrder: number;
 }

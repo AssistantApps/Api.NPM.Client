@@ -1,5 +1,7 @@
 ﻿/* Auto Generated */
 
+import { PlatformType } from "./../Enum/platformType";
+
 export interface AppNoticeViewModel {
     guid: string;
     appGuid: string;
@@ -8,7 +10,7 @@ export interface AppNoticeViewModel {
     iconUrl: string;
     externalUrl: string;
     languageCode: string;
-    platforms: any[];
+    platforms: PlatformType[];
     isVisible: boolean;
     endDate: Date;
     sortOrder: number;

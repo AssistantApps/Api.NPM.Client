@@ -7,4 +7,5 @@ export enum PlatformType {
     api,
     windows,
     githubWindowsInstaller,
+    fDroid,
 }
